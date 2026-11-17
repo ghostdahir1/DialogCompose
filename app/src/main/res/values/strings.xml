@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DialogCompose Maps</string>
+    <!-- Coloca aqui tu Google Maps API Key -->
+    <string name="google_maps_key">TU_GOOGLE_MAPS_API_KEY_AQUI</string>
+</resources>
