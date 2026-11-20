@@ -126,84 +126,39 @@ fun DialogMapsScreen(modifier: Modifier = Modifier) {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Encabezado institucional con escudo de la UPP y datos del alumno
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(24.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+// Simplified header with logo and title
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFF4A148C))
+                    .padding(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            Brush.horizontalGradient(
-                                colors = listOf(Color(0xFF4A148C), Color(0xFF1A73E8))
-                            )
-                        )
-                        .padding(18.dp)
+                Image(
+                    painter = painterResource(id = R.drawable.logo_upp),
+                    contentDescription = "Escudo UPP",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(48.dp)
+                )
+                Text(
+                    text = "DialogCompose – UPP",
+                    color = Color.White,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                // API key status badge
+                Surface(
+                    color = if (hasCustomKey) Color(0xFF00C853) else Color(0xFFFFAB00),
+                    shape = RoundedCornerShape(50)
                 ) {
-                    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(12.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Surface(
-                                shape = RoundedCornerShape(14.dp),
-                                color = Color.White,
-                                shadowElevation = 3.dp,
-                                modifier = Modifier.size(56.dp)
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.logo_upp),
-                                    contentDescription = "Escudo de la Universidad Politécnica de Pachuca",
-                                    contentScale = ContentScale.Fit,
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .padding(4.dp)
-                                )
-                            }
-
-                            Column(modifier = Modifier.weight(1f)) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    modifier = Modifier.fillMaxWidth()
-                                ) {
-                                    Text(
-                                        text = "DialogCompose • UPP",
-                                        color = Color.White,
-                                        fontSize = 20.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                    Surface(
-                                        color = if (hasCustomKey) Color(0xFF00C853) else Color(0xFFFFAB00),
-                                        shape = RoundedCornerShape(50)
-                                    ) {
-                                        Text(
-                                            text = if (hasCustomKey) "API Key Activa" else "Mapa Integrado",
-                                            color = Color(0xFF0F172A),
-                                            fontSize = 10.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
-                                        )
-                                    }
-                                }
-                                Text(
-                                    text = "Aarón Dahir Lorenzana Hernández • TIID 4-02 • Matrícula: 2531126341",
-                                    color = Color.White.copy(alpha = 0.92f),
-                                    fontSize = 11.5.sp,
-                                    fontWeight = FontWeight.Medium
-                                )
-                            }
-                        }
-
-                        Text(
-                            text = "Práctica de AlertDialog con Estados, Funciones Lambda y Google Maps",
-                            color = Color.White.copy(alpha = 0.9f),
-                            fontSize = 12.5.sp
-                        )
-                    }
+                    Text(
+                        text = if (hasCustomKey) "API Key Activa" else "Mapa Integrado",
+                        color = Color(0xFF0F172A),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
+                    )
                 }
             }
 
